@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<widget xmlns:rim="http://www.blackberry.com/ns/widgets" id="ParkingFinder" version="3.1.0" rim:header="RIM-Widget:rim/widget" xmlns="http://www.w3.org/ns/widgets">
+  <name>ParkingFinder</name>
+  <description>ParkingFinder</description>
+  <author>Team</author>
+  <icon src="images\icon.png" />
+  <icon src="images\icon.png" rim:hover="true" />
+  <rim:splash src="images\bb10-splash-portrait.jpg" />
+  <rim:permissions>
+    <rim:permit>access_location_services</rim:permit>
+    <rim:permit>read_geolocation</rim:permit>
+  </rim:permissions>
+  <content src="index.htm" />
+  <access uri ="*"/>
+  <access uri="http://maps.googleapis.com" subdomains="true" />
+  <access uri="https://maps.googleapis.com" subdomains="true" />
+  <access uri="http://chart.apis.google.com" subdomains="true" />
+  <feature id="blackberry.push" />
+  <feature id="blackberry.message.sms" />
+  <feature id="blackberry.ui.menu" />
+  <feature id="blackberry.ui.dialog"/>
+  <feature id="blackberry.ui.toast" />
+  <feature id="blackberry.identity" />
+  <feature id="blackberry.system.event" />
+  <feature id="blackberry.app" />
+  <feature id="blackberry.app.event"/>
+</widget>

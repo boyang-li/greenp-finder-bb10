@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<!--
+* Copyright 2010-2011 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<style type="text/css">
+  #suggestions {
+      position:absolute;
+      z-index:1;
+      color: white;
+      background-color: #4A4A4A;
+  }
+</style>
+<div data-bb-type="screen" data-bb-effect="fade">
+	
+	
+	<div id="search">
+		<div data-bb-type="round-panel" > 
+			<div data-bb-type="panel-header">Search the address</div>
+            <table>
+                <tr>
+                    <td style="width:90%"><div><input id="address" type="text" ontouchend="selectText(this);" onkeyup="autosuggestion(this.value);" value="Please enter the address" /></div></td>
+                    <td><div id="btnSearch" data-bb-type="button" data-bb-img="images/search.png"  onclick="targetSearch(); "></div></td>
+                </tr>
+            </table>
+			
+            <div id="suggestions">
+            </div>
+           
+            <div id="map_canvas" data-bb-style="stretch" style="width: 100%; height: 780px;"></div>
+            <div id="search_page_main"></div>
+		</div>
+	
+		
+	</div>
+	
+	<div id="near" style="display:none">
+		<div data-bb-type="round-panel"> 
+			<div data-bb-type="panel-header">Near By</div>
+            <div data-bb-type="button" data-bb-style="stretch" onclick="getCurrent()" >Get Curent</div>	
+            <div id="map_canvas_near_by" data-bb-style="stretch" style="width: 100%; height: 750px;"></div>
+            <div id="search_page_near_by"></div>
+		</div>
+	</div>
+	
+	<div id="favorite" style="display:none;">
+		<div data-bb-type="round-panel"> 
+			<div data-bb-type="panel-header">Favorite</div>
+			<div id="favoriteList" data-bb-type="image-list" data-bb-style="arrowlist"  data-bb-images="none" data-bb-image-effect="slide-left">	
+		        <div data-bb-type="item" data-bb-title="No Favorite Lot"></div>
+	        </div>
+		</div>
+	</div>
+
+    <div id="setting" style="display:none">
+		<div data-bb-type="round-panel"> 
+			<div data-bb-type="panel-header">Settings</div>
+			<div style="margin:3px;">
+		    <div data-bb-type="label">City:</div>
+		    <select data-bb-style="stretch" data-bb-label="City" id="city">
+				<option value="toronto" selected="true">Toronto</option>
+				<option value="kitchener" >Kitchener</option>
+				<option value="cambridge" >Cambridge</option>
+		    </select>
+	        </div>
+                <div data-bb-type="label">Range(m):</div>
+            <div>
+            <table style="margin:20px; margin-top:0px">
+                 <tr>
+                    <td colspan=3><input id="range" type="text" size="2" disabled="true" /></td>
+                </tr>
+		        <tr>
+			        <td style="width:100px;"><img src="images/min.png"/></td>
+			        <td style="width:568px"><input id="myslider" type="range" min="100" max="2000" value="0" step="100" style="width:100%" onchange="printValue('myslider','range')" /></td>
+			        <td style="width:100px;"><img src="images/max.png"/></td>
+		        </tr>
+               
+	        </table>
+            </div>
+		</div>
+        <div data-bb-type="round-panel"> 
+			 <div data-bb-type="button" data-bb-style="stretch" onclick="dropTables();standardDialog();" >Clear Favorite</div>
+             <!-- polish this method  -->	
+		</div>
+	</div>
+
+	<div data-bb-type="action-bar">
+		
+		<div data-bb-type="action" data-bb-style="tab" data-bb-selected="true" data-bb-img="images/actionBar/ic_search.png" onclick="showTab('search');">Search</div>
+		<div data-bb-type="action" data-bb-style="tab" data-bb-img="images/actionBar/ic_nearby.png" onclick="showTab('near');">Near By</div>
+		<div data-bb-type="action" data-bb-style="tab" data-bb-img="images/actionBar/ic_favorite.png" onclick="showTab('favorite');showFavoriteList();">Favorite</div>
+        <div data-bb-type="action" data-bb-style="tab" data-bb-img="images/actionBar/ic_setting.png" onclick="showTab('setting');">Setting</div>
+
+	</div>
+</div>
